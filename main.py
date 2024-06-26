@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_option_menu import option_menu
 from home import home
 from orderlist import orderlist
 # from edit_orderlist import edit_orderlist
@@ -43,7 +44,10 @@ def main():
     # 로그인 성공 후 네비게이션 메뉴 제공
     if st.session_state['logged_in']:
         st.sidebar.title("제공 서비스")
-        option = st.sidebar.selectbox("Select a page:", ["Home", "오더리스트", "지자체 예산서", "인포21", "뉴스 스크랩"], key="main_menu")
+        option = option_menu("Menu", 
+                             ["Home", "오더리스트", "지자체 예산서", "인포21", "뉴스 스크랩"], 
+                             icons=['house', 'list', 'book', 'info', 'newspaper'], 
+                             menu_icon="cast", default_index=0)
         
         if option == "Home":
             home()
