@@ -52,9 +52,17 @@ def main():
             st.session_state['password'] = None
             st.experimental_rerun()
 
-        option = option_menu("Menu", ["Home", "오더리스트", "지자체 예산서", "인포21", "뉴스 스크랩"], 
-                             icons=['house', 'list', 'book', 'info', 'newspaper'], 
-                             menu_icon="cast", default_index=0, orientation="vertical", key="sidebar_menu")
+        with st.sidebar:
+            option = option_menu("Menu", ["Home", "오더리스트", "지자체 예산서", "인포21", "뉴스 스크랩"], 
+                                icons=['house', 'list', 'book', 'info', 'newspaper'], 
+                                menu_icon="cast", default_index=0, orientation="vertical", key="sidebar_menu",
+                                styles={
+                                    "container": {"padding": "5!important", "background-color": "#fafafa"},
+                                    "icon": {"color": "orange", "font-size": "25px"}, 
+                                    "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
+                                    "nav-link-selected": {"background-color": "#02ab21"},
+                                    }
+                                )
         
         if option == "Home":
             home()
