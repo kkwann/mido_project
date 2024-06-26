@@ -3,7 +3,7 @@ from home import home
 from orderlist import orderlist
 from edit_orderlist import edit_orderlist
 from final_orderlist import final_orderlist
-from utils import load_data
+from utils import get_dataframe_from_bigquery
 
 def main():
     st.title("Streamlit Application")
@@ -23,7 +23,7 @@ def main():
         if st.button("Login"):
             try:
                 # 'users' 테이블에서 사용자 정보 로드
-                users = load_data('mido_test', 'users')
+                users = get_dataframe_from_bigquery('mido_test', 'users')
                 user = users[(users['employeeName'] == username) & (users['password'] == password)]
                 
                 if not user.empty:
@@ -41,7 +41,7 @@ def main():
     # 로그인 성공 후 네비게이션 메뉴 제공
     if st.session_state['logged_in']:
         st.sidebar.title("DB")
-        data = load_data('mido_test', 'orderlist')
+        data = get_dataframe_from_bigquery('mido_test', 'orderlist')
         st.write(data)
 
 if __name__ == "__main__":
