@@ -57,7 +57,7 @@ def main():
                                 icons=['house', 'list', 'book', 'info', 'newspaper'], 
                                 menu_icon="cast", default_index=0, orientation="vertical", key="sidebar_menu",
                                 styles={
-                                    "container": {"padding": "5!important", "background-color": "#fafafa"},
+                                    "container": {"padding": "5!important", "background-color": "#fafafa", "color": "black"},
                                     "icon": {"color": "orange", "font-size": "25px"}, 
                                     "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "#eee", "color": "black"},
                                     "nav-link-selected": {"background-color": "#02ab21"},
