@@ -1,4 +1,16 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 streamlit
 google-cloud-bigquery
 pandas
+=======
+streamlit
+google-cloud-bigquery
+pandas
+>>>>>>> origin/main
+=======
+streamlit
+google-cloud-bigquery
+pandas
+>>>>>>> origin/main
 db-dtypes

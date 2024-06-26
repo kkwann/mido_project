@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 import streamlit as st
 
 def home():
@@ -5,3 +7,21 @@ def home():
     st.write("Welcome to the Streamlit application.")
     if 'username' in st.session_state:
         st.success(f"Logged in as {st.session_state['username']}")
+=======
+import streamlit as st
+
+def home():
+    st.title("Home")
+    st.write("Welcome to the Streamlit application.")
+    if 'username' in st.session_state:
+        st.success(f"Logged in as {st.session_state['username']}")
+>>>>>>> origin/main
+=======
+import streamlit as st
+
+def home():
+    st.title("Home")
+    st.write("Welcome to the Streamlit application.")
+    if 'username' in st.session_state:
+        st.success(f"Logged in as {st.session_state['username']}")
+>>>>>>> origin/main
