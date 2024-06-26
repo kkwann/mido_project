@@ -12,32 +12,33 @@ def get_bigquery_client():
     client = bigquery.Client(credentials=credentials, project=credentials.project_id)
     return client
 
-def load_data(dataset_id, table_name):
-    """
-    BigQuery에서 데이터를 로드하여 Pandas DataFrame으로 반환.
-    Args:
-    dataset_id (str): 데이터셋 ID
-    table_name (str): 테이블 이름
-    """
+def save_dataframe_to_bigquery(df, dataset_id, table_id):
+    # BigQuery 클라이언트 객체 생성
+    client = get_bigquery_client()
+
+    # 테이블 레퍼런스 생성
+    table_ref = client.dataset(dataset_id).table(table_id)
+
+    # 데이터프레임을 BigQuery 테이블에 적재
+    job_config = bigquery.LoadJobConfig()
+    job_config.write_disposition = "WRITE_TRUNCATE"  # 기존 테이블 내용 삭제 후 삽입
+
+    job = client.load_table_from_dataframe(df, table_ref, job_config=job_config)
+    job.result()  # 작업 완료 대기
+
+    print(f"Data inserted into table {table_id} successfully.")
+
+def get_dataframe_from_bigquery(dataset_id, table_id):
     # BigQuery 클라이언트 생성
-    try:
-        client = get_bigquery_client()
+    client = get_bigquery_client()
 
-        query = f"SELECT * FROM `{dataset_id}.{table_name}`"
-        data = client.query(query).to_dataframe()
+    # 테이블 레퍼런스 생성
+    table_ref = client.dataset(dataset_id).table(table_id)
 
-        # # 테이블 레퍼런스 생성 --> 데이터양 많을때 성능 떨어짐
-        # table_ref = client.dataset(dataset_id).table(table_name) 
+    # 테이블 데이터를 DataFrame으로 변환
+    df = client.list_rows(table_ref).to_dataframe()
 
-        # # table = client.get_table(table_ref) # API 요청
-
-        # # 테이블 데이터를 DataFrame으로 변환
-        # data = client.list_rows(table_ref).to_dataframe()
-        return data
-    
-    except Exception as e:
-        st.error(f"Error loading data from BigQuery: {e}")
-        raise
+    return df
 
 def save_data_to_bigquery(dataframe, dataset_id, table_name):
     """

@@ -30,3 +30,9 @@ env/
 
 # config 관련
 .config/
+
+# 스크립트 관련
+*.ipynb
+
+# 데이터 관련
+data/

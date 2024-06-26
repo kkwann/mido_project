@@ -6,7 +6,7 @@ from final_orderlist import final_orderlist
 from utils import load_data
 
 def main():
-    st.title("Streamlit Application")
+    st.title("미도플러스")
 
     # 세션 상태에서 로그인 상태 확인 및 초기화
     if 'logged_in' not in st.session_state:

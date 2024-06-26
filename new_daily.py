@@ -1,10 +1,10 @@
 import streamlit as st
-from utils import load_data
+from utils import get_dataframe_from_bigquery
 
-def final_orderlist():
-    st.title("Final Order List")
+def new_daily():
+    st.title("최신 뉴스 기사 스크랩")
     if 'logged_in' in st.session_state and st.session_state['logged_in']:
-        data = load_data('mido_test', 'modified_orderlist')
+        data = get_dataframe_from_bigquery('mido_test', 'news_daily')
         st.write(data)
     else:
         st.warning("Please login to access this page.")
