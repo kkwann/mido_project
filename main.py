@@ -1,9 +1,11 @@
 import streamlit as st
 from home import home
 from orderlist import orderlist
-from edit_orderlist import edit_orderlist
-from final_orderlist import final_orderlist
-from utils import load_data
+# from edit_orderlist import edit_orderlist
+# from final_orderlist import final_orderlist
+from budget_df import budget_df
+from budget_link_df import budget_link_df
+from utils import get_dataframe_from_bigquery
 
 def main():
     st.title("미도플러스")
@@ -23,7 +25,7 @@ def main():
         if st.button("Login"):
             try:
                 # 'users' 테이블에서 사용자 정보 로드
-                users = load_data('mido_test', 'users')
+                users = get_dataframe_from_bigquery('mido_test', 'users')
                 user = users[(users['employeeName'] == username) & (users['password'] == password)]
                 
                 if not user.empty:
@@ -40,17 +42,19 @@ def main():
 
     # 로그인 성공 후 네비게이션 메뉴 제공
     if st.session_state['logged_in']:
-        st.sidebar.title("Navigation")
-        option = st.sidebar.selectbox("Select a page:", ["Home", "Order List", "Edit Order List", "Final Order List"], key="main_menu")
+        st.sidebar.title("제공 서비스")
+        option = st.sidebar.selectbox("Select a page:", ["Home", "오더리스트", "지자체 예산서", "인포21", "뉴스 스크랩"], key="main_menu")
         
         if option == "Home":
             home()
-        elif option == "Order List":
+        elif option == "오더리스트":
             orderlist()
-        elif option == "Edit Order List":
-            edit_orderlist()
-        elif option == "Final Order List":
-            final_orderlist()
+        elif option == "지자체 예산서":
+            budget_df()
+        elif option == "인포21":
+            budget_link_df()
+        # elif option == "뉴스 스크랩":
+        #     final_orderlist()
 
 if __name__ == "__main__":
     main()
