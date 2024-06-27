@@ -11,7 +11,7 @@ def search_and_display_data(data_tb):
     data = get_dataframe_from_bigquery('budget', data_tb)
     
     # 날짜 형식으로 변환
-    data['집행일자'] = pd.to_datetime(data['집행일자'], format='%Y%m%d', errors='coerce')
+    data['집행일자'] = data['집행일자'].astype(str)
 
     if keyword:
         filtered_data = data[data['세부사업명'].str.contains(keyword)]
