@@ -45,10 +45,26 @@ def main():
     # 로그인 성공 후 네비게이션 메뉴 제공
     if st.session_state['logged_in']:
         st.sidebar.title("제공 서비스")
-        option = option_menu("Menu", 
-                             ["Home", "오더리스트", "지자체 예산서 링크", "지자체 예산서", "인포21", "뉴스 스크랩"], 
-                             icons=['house', 'list', 'list', 'book', 'info', 'newspaper'], 
-                             menu_icon="cast", default_index=0)
+
+        st.sidebar.write(f"Logged in as: {st.session_state['username']}")
+        if st.sidebar.button("Logout"):
+            st.session_state['logged_in'] = False
+            st.session_state['username'] = None
+            st.session_state['password'] = None
+            st.experimental_rerun()
+
+        with st.sidebar:
+            option = option_menu("Menu", 
+                                 ["Home", "오더리스트", "지자체 예산서 링크", "지자체 예산서", "인포21", "뉴스 스크랩"], 
+                                icons=['house', 'list', 'list', 'book', 'info', 'newspaper'], 
+                                menu_icon="cast", default_index=0, orientation="vertical", key="sidebar_menu",
+                                styles={
+                                    "container": {"padding": "5!important", "background-color": "#fafafa", "color": "black"},
+                                    "icon": {"color": "orange", "font-size": "25px"}, 
+                                    "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "#eee", "color": "black"},
+                                    "nav-link-selected": {"background-color": "#02ab21", "color": "black"},
+                                    }
+                                )
         
         if option == "Home":
             home()
