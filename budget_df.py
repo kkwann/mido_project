@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+import pandas as pd
 from utils import get_dataframe_from_bigquery
 
 def search_and_display_data(data_tb):
@@ -13,6 +14,10 @@ def search_and_display_data(data_tb):
     # 날짜 형식 변환
     data['집행일자'] = data['집행일자'].astype(str)
     data['회계연도'] = data['회계연도'].astype(str)
+
+    # 인조잔디 우선 정렬
+    data = pd.concat([data[data['세부사업명'].str.contains('인조잔디')],
+                      data[~data['세부사업명'].str.contains('인조잔디')]],axis=0).reset_index(drop=True)
 
     if keyword:
         filtered_data = data[data['세부사업명'].str.contains(keyword)]
