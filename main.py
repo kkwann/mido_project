@@ -1,13 +1,18 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+from utils import get_dataframe_from_bigquery
 from home import home
+
 from orderlist import orderlist
 # from edit_orderlist import edit_orderlist
 # from final_orderlist import final_orderlist
+
 from budget_df import budget_df
 from budget_link_df import budget_link_df
+
+from info_df import info_ser_df
+
 from news_daily import news_daily
-from utils import get_dataframe_from_bigquery
 
 def main():
     # st.title("미도플러스")
@@ -75,7 +80,7 @@ def main():
         elif option == "지자체 예산서":
             budget_df()
         elif option == "인포21":
-            budget_link_df()
+            info_ser_df()
         elif option == "뉴스 스크랩":
             news_daily()
 
