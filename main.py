@@ -17,6 +17,12 @@ from news_daily import news_daily
 def main():
     # st.title("미도플러스")
 
+    st.set_page_config(page_title="Mido_Plus",
+                       page_icon=None,
+                       layout="wide",
+                       initial_sidebar_state="auto",
+                       menu_items=None)
+
     # 세션 상태에서 로그인 상태 확인 및 초기화
     if 'logged_in' not in st.session_state:
         st.session_state['logged_in'] = False

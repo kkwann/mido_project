@@ -23,11 +23,11 @@ def search_and_display_data(data_tb):
         filtered_data = data[data['세부사업명'].str.contains(keyword)]
         # filtered_data = data[data.apply(lambda row: row.astype(str).str.contains(keyword).any(), axis=1)]
         # st.write(filtered_data)
-        st.dataframe(filtered_data, width=1500, height=600)
+        st.dataframe(filtered_data, width=2000, height=1000)
 
     else:
         # st.write(data)
-        st.dataframe(data, width=1500, height=600)
+        st.dataframe(data, width=2000, height=1000)
 
 def budget_df():
     st.subheader("지자체 세부사업별 예산서")
