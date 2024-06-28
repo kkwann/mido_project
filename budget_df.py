@@ -1,15 +1,23 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
+from datetime import datetime, timedelta
 from utils import get_dataframe_from_bigquery
 
-def search_and_display_data(data_tb):
+today = datetime.today().strftime('%Y%m%d')
+# ytday = (datetime.today() - timedelta(days=1)).strftime('%Y%m%d')
+
+data_today = get_dataframe_from_bigquery('budget', 'budget_df_0' + today)
+data_new = get_dataframe_from_bigquery('budget', 'budget_df_new')
+data_delete = get_dataframe_from_bigquery('budget', 'budget_df_delete')
+
+def search_and_display_data(data):
     # st.write(f"Displaying {data_tb}")
     
     keyword = st.text_input(f"세부사업명에서 찾고 싶은 키워드를 입력해주세요.")
     
     # Replace 'your_dataframe' with the actual DataFrame variable or function
-    data = get_dataframe_from_bigquery('budget', data_tb)
+    # data = get_dataframe_from_bigquery('budget', data_tb)
     
     # 날짜 형식 변환
     data['집행일자'] = data['집행일자'].astype(str)
@@ -38,13 +46,13 @@ def budget_df():
         
         if sub_option == "기존데이터":
             st.write(f"금일 지자체 세부사업별 데이터")
-            search_and_display_data('budget_df_020240627')
+            search_and_display_data(data_today)
         elif sub_option == "추가데이터":
             st.write(f"금일 추가된 지자체 세부사업별 데이터")
-            search_and_display_data("budget_df_020240627")
+            search_and_display_data(data_new)
         elif sub_option == "종료데이터":
             st.write(f"금일 종료된 지자체 세부사업별 데이터")
-            search_and_display_data("budget_df_020240627")
+            search_and_display_data(data_delete)
     
     else:
         st.warning("Please login to access this page.")
