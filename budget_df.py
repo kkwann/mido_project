@@ -5,10 +5,6 @@ from utils import get_dataframe_from_bigquery
 
 def search_and_display_data(data_tb):
     # st.write(f"Displaying {data_tb}")
-    st.set_page_config(page_icon=None,
-                       layout="wide",
-                       initial_sidebar_state="auto",
-                       menu_items=None)
     
     keyword = st.text_input(f"세부사업명에서 찾고 싶은 키워드를 입력해주세요.")
     
@@ -27,11 +23,11 @@ def search_and_display_data(data_tb):
         filtered_data = data[data['세부사업명'].str.contains(keyword)]
         # filtered_data = data[data.apply(lambda row: row.astype(str).str.contains(keyword).any(), axis=1)]
         # st.write(filtered_data)
-        st.dataframe(filtered_data, width=2000, height=1000)
+        st.dataframe(filtered_data)
 
     else:
         # st.write(data)
-        st.dataframe(data, width=2000, height=1000)
+        st.dataframe(data)
 
 def budget_df():
     st.subheader("지자체 세부사업별 예산서")
