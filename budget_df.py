@@ -5,10 +5,10 @@ from utils import get_dataframe_from_bigquery
 
 def search_and_display_data(data_tb):
     # st.write(f"Displaying {data_tb}")
-    st.set_page_config(page_icon=None,
-                       layout="wide",
-                       initial_sidebar_state="auto",
-                       menu_items=None)
+    # st.set_page_config(page_icon=None,
+    #                    layout="wide",
+    #                    initial_sidebar_state="auto",
+    #                    menu_items=None)
     
     keyword = st.text_input(f"세부사업명에서 찾고 싶은 키워드를 입력해주세요.")
     
