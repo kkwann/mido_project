@@ -10,6 +10,8 @@ from orderlist import orderlist
 from budget_df import budget_df
 from budget_link_df import budget_link_df
 
+from g2b import shop_detail_df
+
 from info_df import info_ser_df
 
 from news_daily import news_daily
@@ -60,8 +62,8 @@ def main():
 
         with st.sidebar:
             option = option_menu("Menu", 
-                                 ["Home", "오더리스트", "지자체 예산서 링크", "지자체 예산서", "인포21", "뉴스 스크랩"], 
-                                icons=['house', 'list', 'list', 'book', 'info', 'newspaper'], 
+                                 ["Home", "오더리스트", "지자체 예산서 링크", "지자체 예산서", "종합쇼핑몰 납품상세","인포21", "뉴스 스크랩"], 
+                                icons=['house', 'list', 'Link', 'book', 'Shopping Cart','info', 'newspaper'], 
                                 menu_icon="cast", default_index=0, orientation="vertical", key="sidebar_menu",
                                 styles={
                                     "container": {"padding": "5!important", "background-color": "#fafafa", "color": "black"},
@@ -75,12 +77,19 @@ def main():
             home()
         elif option == "오더리스트":
             orderlist()
+
         elif option == "지자체 예산서 링크":
             budget_link_df()
+
         elif option == "지자체 예산서":
             budget_df()
+
+        elif option == "종합쇼핑몰 납품상세":
+            shop_detail_df()
+
         elif option == "인포21":
             info_ser_df()
+            
         elif option == "뉴스 스크랩":
             news_daily()
 
