@@ -7,7 +7,7 @@ from utils import get_dataframe_from_bigquery
 today = datetime.today().strftime('%Y%m%d')
 # ytday = (datetime.today() - timedelta(days=1)).strftime('%Y%m%d')
 
-data_today = get_dataframe_from_bigquery('budget', 'budget_df_0' + today)
+data_listup = get_dataframe_from_bigquery('budget', 'budget_df_listup')
 data_new = get_dataframe_from_bigquery('budget', 'budget_df_new')
 data_delete = get_dataframe_from_bigquery('budget', 'budget_df_delete')
 
@@ -46,7 +46,7 @@ def budget_df():
         
         if sub_option == "기존데이터":
             st.write(f"금일 지자체 세부사업별 데이터")
-            search_and_display_data(data_today)
+            search_and_display_data(data_listup)
         elif sub_option == "추가데이터":
             st.write(f"금일 추가된 지자체 세부사업별 데이터")
             search_and_display_data(data_new)
