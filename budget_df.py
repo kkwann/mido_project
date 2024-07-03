@@ -45,13 +45,13 @@ def budget_df():
                                 menu_icon="cast", default_index=0, orientation="horizontal")
         
         if sub_option == "기존데이터":
-            st.write(f"금일 지자체 세부사업별 데이터")
+            st.write(f"금일 지자체 세부사업별 데이터 : {len(data_listup)} 건")
             search_and_display_data(data_listup)
         elif sub_option == "추가데이터":
-            st.write(f"금일 추가된 지자체 세부사업별 데이터")
+            st.write(f"금일 추가된 지자체 세부사업별 데이터 : {len(data_new)} 건")
             search_and_display_data(data_new)
         elif sub_option == "종료데이터":
-            st.write(f"금일 종료된 지자체 세부사업별 데이터")
+            st.write(f"금일 종료된 지자체 세부사업별 데이터 : {len(data_delete)} 건")
             search_and_display_data(data_delete)
     
     else:
