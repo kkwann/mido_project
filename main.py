@@ -60,7 +60,7 @@ def main():
 
         with st.sidebar:
             option = option_menu("Menu", 
-                                 ["Home", "오더리스트", "지자체 예산서 링크", "지자체 예산서", "교육청", "종합쇼핑몰 납품상세내역", "인포21", "뉴스 스크랩"], 
+                                 ["Home", "오더리스트", "지자체 예산서 링크", "지자체 예산서", "교육청 예산서", "종합쇼핑몰 납품상세내역", "인포21", "뉴스 스크랩"], 
                                 icons=['house', 'list', 'bi bi-link', 'book', 'book', 'bi bi-cart4','info', 'newspaper'], 
                                 menu_icon="cast", default_index=0, orientation="vertical", key="sidebar_menu",
                                 styles={
