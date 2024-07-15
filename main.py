@@ -12,7 +12,7 @@ from budget_link_df import budget_link_df
 
 from g2b import shop_detail_df
 
-from info_df import info_ser_df
+from info_df import info_df
 
 from news_daily import news_daily
 
@@ -88,7 +88,7 @@ def main():
             shop_detail_df()
 
         elif option == "인포21":
-            info_ser_df()
+            info_df()
 
         elif option == "뉴스 스크랩":
             news_daily()
