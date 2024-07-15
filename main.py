@@ -9,12 +9,10 @@ from orderlist import orderlist
 
 from budget_df import budget_df
 from budget_link_df import budget_link_df
-
 from g2b import shop_detail_df
-
 from info_df import info_df
-
 from news_daily import news_daily
+from edu import edu_budget_df
 
 def main():
     # st.title("미도플러스")
@@ -62,8 +60,8 @@ def main():
 
         with st.sidebar:
             option = option_menu("Menu", 
-                                 ["Home", "오더리스트", "지자체 예산서 링크", "지자체 예산서", "종합쇼핑몰 납품상세내역","인포21", "뉴스 스크랩"], 
-                                icons=['house', 'list', 'bi bi-link', 'book', 'bi bi-cart4','info', 'newspaper'], 
+                                 ["Home", "오더리스트", "지자체 예산서 링크", "지자체 예산서", "교육청", "종합쇼핑몰 납품상세내역", "인포21", "뉴스 스크랩"], 
+                                icons=['house', 'list', 'bi bi-link', 'book', 'book', 'bi bi-cart4','info', 'newspaper'], 
                                 menu_icon="cast", default_index=0, orientation="vertical", key="sidebar_menu",
                                 styles={
                                     "container": {"padding": "5!important", "background-color": "#fafafa", "color": "black"},
@@ -83,6 +81,9 @@ def main():
 
         elif option == "지자체 예산서":
             budget_df()
+
+        elif option == "교육청 예산서":
+            edu_budget_df()
 
         elif option == "종합쇼핑몰 납품상세내역":
             shop_detail_df()

@@ -37,8 +37,27 @@ def info_df():
                                  menu_icon="cast", default_index=0, orientation="horizontal")
         
         if sub_option == "공사입찰":
+            # CSS 스타일을 사용하여 데이터프레임의 크기를 조절
+            st.markdown(
+                """
+                <style>
+                .dataframe-container {
+                    height: 85vh;  /* Adjust the height as needed */
+                    width: 100%;
+                    overflow: auto;
+                }
+                .dataframe-container table {
+                    width: 100%;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True,
+            )
+            st.markdown('<div class="dataframe-container">', unsafe_allow_html=True)
             st.write(f"금일 인포21 공사입찰 데이터 : {len(data_con)} 건")
             st.dataframe(data_con)
+            # HTML 컨테이너를 사용하여 데이터프레임을 표시
+            st.markdown('</div>', unsafe_allow_html=True)
 
         elif sub_option == "용역입찰":
             st.write(f"금일 인포21 용역입찰 데이터 : {len(data_ser)} 건")
