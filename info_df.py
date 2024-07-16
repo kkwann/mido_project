@@ -23,9 +23,9 @@ elif today.weekday() == 6:  # 일요일
 ytday = ytday.strftime('%Y%m%d')
 today = today.strftime('%Y%m%d')
 
-data_con = get_dataframe_from_bigquery('info21', 'bid_con_df_0' + today)
-data_ser = get_dataframe_from_bigquery('info21', 'bid_ser_df_0' + today)
-data_pur = get_dataframe_from_bigquery('info21', 'bid_pur_df_0' + today)
+data_con = get_dataframe_from_bigquery('info21', 'bid_con_df_0' + today[4:6])
+data_ser = get_dataframe_from_bigquery('info21', 'bid_ser_df_0' + today[4:6])
+data_pur = get_dataframe_from_bigquery('info21', 'bid_pur_df_0' + today[4:6])
 
 
 def info_df():
