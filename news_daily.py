@@ -26,7 +26,7 @@ def news_daily():
     st.subheader("최신 뉴스 기사 스크랩")
     # st.title("최신 뉴스 기사 스크랩")
     if 'logged_in' in st.session_state and st.session_state['logged_in']:
-        data = get_dataframe_from_bigquery('news', 'news_daily_0'+today)
+        data = get_dataframe_from_bigquery('news', 'news_daily_listup')
         data = data.sort_values(['기사날짜'],ascending=False).reset_index(drop=True)
         
         st.write(f"최신 뉴스 기사 데이터 : {len(data)} 건")
