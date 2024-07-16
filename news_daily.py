@@ -31,7 +31,7 @@ def news_daily():
         
         st.write(f"최신 뉴스 기사 데이터 : {len(data)} 건")
         st.data_editor(
-            data,
+            data[['기사날짜','원본링크','제목','본문']],
             column_config={
                 "원본링크": st.column_config.LinkColumn(
                     "원본링크",
@@ -43,6 +43,6 @@ def news_daily():
                     hide_index=True,
                     )
         
-        st.write(data)
+        # st.write(data)
     else:
         st.warning("Please login to access this page.")
