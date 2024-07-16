@@ -14,6 +14,15 @@ from info_df import info_df
 from news_daily import news_daily
 from edu import edu_budget_df
 
+# 페이지 설정
+st.set_page_config(
+    page_title="미도플러스",
+    page_icon=None,
+    layout="wide",
+    initial_sidebar_state="auto",
+    menu_items=None
+)
+
 def main():
     # st.title("미도플러스")
 
