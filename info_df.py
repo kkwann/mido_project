@@ -37,15 +37,15 @@ def info_df():
                                  menu_icon="cast", default_index=0, orientation="horizontal")
         
         if sub_option == "공사입찰":
-            st.write(f"금일 인포21 공사입찰 데이터 : {len(data_con)} 건")
+            st.write(f"인포21 공사입찰 데이터 : {len(data_con)} 건")
             st.dataframe(data_con)
 
         elif sub_option == "용역입찰":
-            st.write(f"금일 인포21 용역입찰 데이터 : {len(data_ser)} 건")
+            st.write(f"인포21 용역입찰 데이터 : {len(data_ser)} 건")
             st.dataframe(data_ser)
             
         elif sub_option == "구매입찰":
-            st.write(f"금일 인포21 구매입찰 데이터 : {len(data_pur)} 건")
+            st.write(f"인포21 구매입찰 데이터 : {len(data_pur)} 건")
             st.dataframe(data_pur)
 
     else:
