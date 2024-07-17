@@ -9,5 +9,6 @@ def edu_budget_df():
 
         st.write(f"교육청 예산서 데이터 : {len(data)} 건")
         st.write(data)
+        
     else:
         st.warning("Please login to access this page.")
